@@ -26,6 +26,16 @@ class PokemonActivity : AppCompatActivity() {
     private fun initUI(){
         val id = intent.extras?.get("id") as Int
 
+        viewModel.getPokemon(id)
+        viewModel.pokemon.observe(this, Observer { pikachu ->
+            binding.alturaTV.text = pikachu.height.toString()
+            binding.pesoTV.text = pikachu.weight.toString()
+            binding.nombreTV.text = pikachu.name
+            Glide.with(this)
+                .load(pikachu.sprites.front_default)
+                .into(binding.imageView)
+        })
+
 
     }
 }

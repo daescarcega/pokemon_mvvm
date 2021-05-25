@@ -6,14 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import edu.itesm.pokedex.databinding.PokemonRenglonBinding
 import edu.itesm.pokedex.model.PokemonResult
 
-class PokedexAdapter(val pokemonClick: (Int) -> Unit): RecyclerView.Adapter<PokedexAdapter.PokemonViewHolder>() {
+class PokedexAdapter(val pokemonClick: (Int) -> Unit):
+    RecyclerView.Adapter<PokedexAdapter.PokemonViewHolder>() {
     var pokemonList: List<PokemonResult> = emptyList<PokemonResult>()
 
     fun setData(list: List<PokemonResult>){
         pokemonList = list
         notifyDataSetChanged()
     }
-    inner class PokemonViewHolder(val binding: PokemonRenglonBinding): RecyclerView.ViewHolder(binding.root)
+    inner class PokemonViewHolder(val binding: PokemonRenglonBinding):
+        RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {

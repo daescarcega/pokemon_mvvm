@@ -12,5 +12,37 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class PokedexViewModel() : ViewModel() {
+    // llamo al servicio con retorfit
+    //MutableLiveData, crea.
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("https://pokeapi.co/api/v2/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    private val service: PokemonService = retrofit.create(PokemonService::class.java)
+
+    val pokemonList = MutableLiveData<List<PokemonResult>>()
+
+    fun getPokemonList(){
+        val call = service.getListaPokemons(100, 0)
+        call.enqueue(object : Callback<PokemonResponse>{
+            override fun onResponse(
+                call: Call<PokemonResponse>,
+                response: Response<PokemonResponse>
+            ) {
+                response.body()?.results?.let { lista ->
+                    pokemonList.postValue(lista)
+                }
+
+            }
+
+            override fun onFailure(call: Call<PokemonResponse>, t: Throwable) {
+                call.cancel()
+            }
+
+        })
+
+    }
+
 
 }

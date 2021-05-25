@@ -35,7 +35,11 @@ class PokedexActivity : AppCompatActivity() {
             intent.putExtra("id", it)
             startActivity(intent)
         }
+        viewModel.getPokemonList()
 
+        viewModel.pokemonList.observe(this, Observer { listaPokemons ->
+            (binding.recyclerView.adapter as PokedexAdapter).setData(listaPokemons)
+        })
 
     }
 
