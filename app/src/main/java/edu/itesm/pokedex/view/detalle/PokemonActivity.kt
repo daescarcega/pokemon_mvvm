@@ -26,17 +26,6 @@ class PokemonActivity : AppCompatActivity() {
     private fun initUI(){
         val id = intent.extras?.get("id") as Int
 
-        viewModel.getPokemonInfo(id)
 
-        viewModel.pokemonInfo.observe(this, Observer { pokemon ->
-            binding.nombreTV.text = pokemon.name
-            binding.alturaTV.text = "Altura: ${pokemon.height/10.0}m"
-            binding.pesoTV.text = "Peso: ${pokemon.weight/10.0}"
-
-            Glide.with(this)
-                .load(pokemon.sprites.front_default)
-                .circleCrop()
-                .into(binding.imageView)
-        })
     }
 }

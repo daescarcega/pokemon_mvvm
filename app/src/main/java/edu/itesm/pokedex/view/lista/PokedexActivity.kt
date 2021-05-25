@@ -36,11 +36,7 @@ class PokedexActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        viewModel.getPokemonList()
 
-        viewModel.pokemonList.observe(this, Observer { list ->
-            (binding.recyclerView.adapter as PokedexAdapter).setData(list)
-        })
     }
 
 }
