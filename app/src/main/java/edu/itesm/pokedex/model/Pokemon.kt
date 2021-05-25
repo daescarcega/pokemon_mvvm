@@ -15,10 +15,10 @@ data class Sprites (
 )
 
 data class PokemonResponse (
-    val results: List<PokeResult>
+    val results: List<PokemonResult>
 )
 
-data class PokeResult (
+data class PokemonResult (
    val name: String,
    val url: String
 )

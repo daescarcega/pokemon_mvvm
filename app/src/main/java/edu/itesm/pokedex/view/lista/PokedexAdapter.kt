@@ -1,18 +1,15 @@
 package edu.itesm.pokedex.view.lista
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import edu.itesm.pokedex.R
-import edu.itesm.pokedex.databinding.ActivityMainBinding
 import edu.itesm.pokedex.databinding.PokemonRenglonBinding
-import edu.itesm.pokedex.model.PokeResult
+import edu.itesm.pokedex.model.PokemonResult
 
 class PokedexAdapter(val pokemonClick: (Int) -> Unit): RecyclerView.Adapter<PokedexAdapter.PokemonViewHolder>() {
-    var pokemonList: List<PokeResult> = emptyList<PokeResult>()
+    var pokemonList: List<PokemonResult> = emptyList<PokemonResult>()
 
-    fun setData(list: List<PokeResult>){
+    fun setData(list: List<PokemonResult>){
         pokemonList = list
         notifyDataSetChanged()
     }

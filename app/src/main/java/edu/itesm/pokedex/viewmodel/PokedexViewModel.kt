@@ -3,7 +3,7 @@ package edu.itesm.pokedex.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.itesm.pokedex.model.PokemonResponse
-import edu.itesm.pokedex.model.PokeResult
+import edu.itesm.pokedex.model.PokemonResult
 import edu.itesm.pokedex.service.PokemonService
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,7 +19,7 @@ class PokedexViewModel() : ViewModel() {
 
     private val service: PokemonService = retrofit.create(PokemonService::class.java)
 
-    val pokemonList = MutableLiveData<List<PokeResult>>()
+    val pokemonList = MutableLiveData<List<PokemonResult>>()
 
     fun getPokemonList(){
         val call = service.getListaPokemons(100,0)
